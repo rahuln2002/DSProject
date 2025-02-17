@@ -9,8 +9,14 @@ import joblib
 
 from src.DataScience.entity.config_entity import ModelEvaluationConfig
 from src.DataScience.constants import *
-from src.DataScience.utils.common import read_yaml, create_directories,save_json
+from src.DataScience.utils.common import save_json
 
+os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/rahuln2002/DSProject.mlflow"
+os.environ["MLFLOW_TRACKING_USERNAME"]="rahuln2002"
+token_file_path = 'secret_access_key'
+with open(token_file_path, 'r') as f:
+    token = f.read().strip()
+os.environ["MLFLOW_TRACKING_PASSWORD"] = token
 
 class ModelEvaluation:
     def __init__(self, config: ModelEvaluationConfig):

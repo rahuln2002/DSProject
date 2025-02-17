@@ -2,3 +2,4 @@ venv/
 logs/
 artifacts/
 research/
+secret_access_key
