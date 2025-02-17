@@ -12,7 +12,6 @@ class DataTransformationTrainingPipeline:
         pass
 
     def initiate_data_transformation(self):
-
         try:
             with open(Path("artifacts/data_validation/status.txt"),'r') as f:
                 status=f.read().split(" ")[-1]

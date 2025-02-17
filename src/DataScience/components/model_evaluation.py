@@ -40,7 +40,6 @@ class ModelEvaluation:
 
             (rmse, mae, r2) = self.eval_metrics(test_y, predicted_qualities)
             
-            # Saving metrics as local
             scores = {"rmse": rmse, "mae": mae, "r2": r2}
             save_json(path=Path(self.config.metric_file_name), data=scores)
 
@@ -51,14 +50,7 @@ class ModelEvaluation:
             mlflow.log_metric("mae", mae)
 
 
-            # Model registry does not work with file store
             if tracking_url_type_store != "file":
-
-                # Register the model
-                # There are other ways to use the Model Registry, which depends on the use case,
-                # please refer to the doc for more information:
-                # https://mlflow.org/docs/latest/model-registry.html#api-workflow
                 mlflow.sklearn.log_model(model, "model", registered_model_name="ElasticnetModel")
             else:
                 mlflow.sklearn.log_model(model, "model")
-    

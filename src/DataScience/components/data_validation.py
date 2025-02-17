@@ -33,6 +33,3 @@ class DataValiadtion:
         
         except Exception as e:
             raise e
-
-    
-
